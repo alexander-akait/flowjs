@@ -152,6 +152,10 @@ new Flow.Fx({
 						}
 						
 						fades.forEach(function(fade) {
+							
+							// Reset scroll position
+							fade.scrollTop = 0;
+							
 							ani = Flow.Animate({
 								node : fade,
 								to : {
