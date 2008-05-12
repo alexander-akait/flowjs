@@ -313,6 +313,10 @@ new Flow.Plugin({
 			}
 		};
 		
+		cXMLHttpRequest.prototype.addEventListener = function(type, event) {
+			return cXMLHttpRequest.prototype["on" + type] = event;
+		};
+		
 		cXMLHttpRequest.prototype.getAllResponseHeaders = function() {
 			return this._object.getAllResponseHeaders();
 		};
