@@ -241,9 +241,6 @@ new Flow.Fx({
 						that.poof.timeout = setTimeout(animate, 75);
 					} else {
 						poof.removeNode();
-						/* if (!that.node.hasChildNodes()) {
-							that.node.removeNode();
-						} */
 						clearTimeout(that.poof.timeout);
 					}
 				};
