@@ -138,6 +138,10 @@ new Flow.Fx({
 					children.forEach(function(child) {
 						var dom = child.DOM;
 						value = (child == curr) ? o[dom] : n[dom];
+							
+						// Reset scroll position
+						child.scrollTop = 0;
+						
 						animate(child, value);
 						var fades = child.getChildNodes().filter(function(fade) {
 							return !fade.hasClass("toggle");
@@ -152,9 +156,6 @@ new Flow.Fx({
 						}
 						
 						fades.forEach(function(fade) {
-							
-							// Reset scroll position
-							fade.scrollTop = 0;
 							
 							ani = Flow.Animate({
 								node : fade,
