@@ -3,7 +3,7 @@ Namespace: The Flow Namespace
 	The Flow namespace, Array Extras, Plugin support, and other goodies.
 	
 About: Version
-	1.0
+	1.0.1
 
 License:
 	- Flow is licensed under a Creative Commons Attribution-Share Alike 3.0 License <http://creativecommons.org/licenses/by-sa/3.0/us/>. You are free to share, modify and remix our code as long as you share alike.
