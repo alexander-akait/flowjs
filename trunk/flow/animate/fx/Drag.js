@@ -3,7 +3,7 @@ Namespace: Drag Module
 	A flow widget that allows drag / drop functionality.
 
 About: Version
-	1.0
+	1.0.1
 
 License:
 	- Created by Richard Herrera <http://doctyper.com>
@@ -16,7 +16,7 @@ Requires:
 
 new Flow.Fx({
 	name : "Drag",
-	version : "1.0",
+	version : "1.0.1",
 	constructor : function(target, options) {
 		var that;
 		return {
