@@ -16,7 +16,7 @@ Requires:
 
 new Flow.Fx({
 	name : "Accordion",
-	version : "1.0.1",
+	version : "1.0.2",
 	constructor : function(target, options) {
 		var that;
 

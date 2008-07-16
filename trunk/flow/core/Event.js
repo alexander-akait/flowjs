@@ -19,7 +19,7 @@ Requires:
 */
 new Flow.Plugin({
 	name : "Event",
-	version : "1.0.1",
+	version : "1.0.2",
 	bind : true,
 	constructor : function() {
 		var F = Flow,
