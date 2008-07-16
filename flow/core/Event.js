@@ -205,7 +205,35 @@ new Flow.Plugin({
 							delete that.events[type][handler.SCH];
 						}
 					}
+				},
+				
+				dispatchEvent : function(type) {
+					that = this;
+					
+					var key;
+					
+					var fireEvents = function() {
+						if ((typeof type === "string") && that.events && that.events[type]) {
+							for (key in that.events[type]) {
+								that.events[type][key].call(that);
+							}
+						}
+					};
+					
+					// Firebug no likee
+					if (window.console && console.firebug) {
+						try {
+							that._dispatchEvent(type);
+						} catch(e) {
+							fireEvents();
+						}
+					} else {
+						fireEvents();
+					}
+					
+					return that;
 				}
+				
 			},
 
 			stack : [],
@@ -266,11 +294,24 @@ new Flow.Plugin({
 					// Augmenting DOM nodes can lead to memory leaks
 					// Here I'm removing all custom methods from each node
 					nullify : function(node, methods) {
-						for (var key in methods) {
-							try {
-								node[key] = null;
-							} catch(e) {}
-						}
+						var key;
+						
+						// Problems with other libraries accessing node properties onunload
+						// caused undefined errors. This will merely revert the element
+						// back to its unaltered state.
+						try {
+							for (key in methods) {
+								if (!(/^\_/).test(key)) {
+									node[key] = node["_" + key] || null;
+								}
+							}
+							
+							for (key in methods) {
+								if ((/^\_/).test(key)) {
+									node[key] = null;
+								}
+							}
+						} catch(e) {}
 					}
 				};
 			}(),
