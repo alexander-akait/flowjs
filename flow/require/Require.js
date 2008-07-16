@@ -18,7 +18,7 @@ Requires:
 
 new Flow.Plugin({
 	name : "Require",
-	version : "1.0.1",
+	version : "1.0.2",
 	constructor : function(type, uri, managed) {
 		var head, script, style;
 
