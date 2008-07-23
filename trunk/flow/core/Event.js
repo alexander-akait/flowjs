@@ -19,7 +19,7 @@ Requires:
 */
 new Flow.Plugin({
 	name : "Event",
-	version : "1.0.2",
+	version : "1.0.3",
 	bind : true,
 	constructor : function() {
 		var F = Flow,
@@ -167,7 +167,13 @@ new Flow.Plugin({
 							
 						};
 						
-						attachEvent.call(this, type, handler);
+						// Firebug does not like Flow's overriding of addEventListener
+						// We'll give it the default implementation.
+						if ((/firebug/).test(type)) {
+							this._addEventListener(type, handler, false);
+						} else {
+							attachEvent.call(this, type, handler);
+						}
 					}
 
 					return that;
@@ -207,6 +213,24 @@ new Flow.Plugin({
 					}
 				},
 				
+				/*
+				Property: dispatchEvent
+					http://developer.mozilla.org/en/docs/DOM:element.dispatchEvent
+					(differs slightly from implementation)
+
+				Parameters:
+					type - the type of event to fire.
+
+				Example:
+					(start code)
+					var foo = document.getElementById("foo");
+					foo.addEventListener("click", ZOMG, false);
+					
+					document.getById("trigger").addEventListener("click", function() {
+						foo.dispatchEvent("click"); // Triggers foo's click event handler
+					}, false);
+					(end code)
+				*/
 				dispatchEvent : function(type) {
 					that = this;
 					
@@ -224,7 +248,7 @@ new Flow.Plugin({
 					if (window.console && console.firebug) {
 						try {
 							that._dispatchEvent(type);
-						} catch(e) {
+						} catch (e) {
 							fireEvents();
 						}
 					} else {
