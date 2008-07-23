@@ -18,7 +18,7 @@ Requires:
 */
 new Flow.Plugin({
 	name : "Query",
-	version : "1.0.2",
+	version : "1.0.3",
 	bind : true,
 	
 	constructor : function() {

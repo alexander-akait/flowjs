@@ -16,7 +16,7 @@ Requires:
 
 new Flow.Plugin({
 	name : "Class",
-	version : "1.0.2",
+	version : "1.0.3",
 	constructor : // Inspired by base2 and Prototype
 	function() {
 		var initializing = false,

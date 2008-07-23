@@ -17,7 +17,7 @@ Requires:
 
 new Flow.Plugin({
 	name : "Form",
-	version : "1.0.2",
+	version : "1.0.3",
 	bind : true,
 	constructor : function() {
 		var getForm = function(f) {

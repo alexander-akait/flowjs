@@ -88,7 +88,7 @@ Example:
 
 new Flow.Plugin({
 	name : "Remote",
-	version : "1.0.2",
+	version : "1.0.3",
 	constructor : 
 	
 	// Copyright 2007 Sergey Ilinsky (http://www.ilinsky.com)
