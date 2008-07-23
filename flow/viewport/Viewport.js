@@ -16,7 +16,7 @@ Requires:
 
 new Flow.Plugin({
 	name : "Viewport",
-	version : "1.0.2",
+	version : "1.0.3",
 	constructor : function() {
 		var doc = document,
 		    body = "body",

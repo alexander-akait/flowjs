@@ -57,7 +57,7 @@ Example:
 */
 new Flow.Plugin({
 	name : "Animate",
-	version : "1.0.2",
+	version : "1.0.3",
 	constructor : function(options, duration) {
 
 		var that,
@@ -409,7 +409,7 @@ new Flow.Plugin({
 
 new Flow.Plugin({
 	name : "Fx",
-	version : "1.0.2",
+	version : "1.0.3",
 	constructor : function(animation) {
 		Flow.Fx[animation.name] = animation.constructor;
 	}
