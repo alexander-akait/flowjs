@@ -3,7 +3,7 @@ Namespace: The Require Namespace
 	On demand javascript lets you dynamically include scripts and styles on your page.
 
 About: Version
-	1.0.1
+	1.0.4
 
 License:
 	- Created by Champ Bennett. Released to the public domain.
@@ -20,18 +20,19 @@ new Flow.Plugin({
 	name : "Require",
 	version : "1.0.3",
 	constructor : function(type, uri, managed) {
-		var head, script, style;
+		var head, script, style,
+		    that = this;
 
 		if (managed) {
 			// Create cache of required scripts
-			this.required = this.required || {};
+			that.required = that.required || {};
 			
 			// test if script has already been required
-			if (this.required[uri]) {
+			if (that.required[uri]) {
 				return;
 			} else {
 				// Add to list of already included scripts
-				this.required[uri] = uri;
+				that.required[uri] = uri;
 			}
 		}
 		
@@ -40,12 +41,42 @@ new Flow.Plugin({
 		switch (type) {
 			case "js" :
 			case "javascript" :
-			// create new script element in head
-			script = document.createElement("script");
-			script.setAttribute("charset", "utf-8");
-			script.setAttribute("type", "text/javascript");
-			script.setAttribute("src", uri);
-			head.appendChild(script);
+			
+			// Keep a record of multiple requests (if any)
+			that.files = that.files || [];
+			that.files.push(uri);
+			
+			var createScript = function(uri) {
+				// create new script element in head
+				script = document.createElement("script");
+				script.setAttribute("type", "text/javascript");
+				script.setAttribute("src", uri);
+				head.appendChild(script);
+				
+				var evt = Flow.Browser.IE ? "readystatechange" : "load";
+				
+				script["on" + evt] = function() {
+					// console.log(this);
+					loadNextScript();
+				};
+			};
+			
+			var loadNextScript = function() {
+				if (that.files[++that.currentIndex]) {
+					createScript(that.files[that.currentIndex]);
+				} else {
+					delete that.files;
+					delete that.isBusy;
+					delete that.currentIndex;
+				}
+			};
+			
+			if (!that.isBusy) {
+				that.isBusy = true;
+				that.currentIndex = 0;
+				createScript(that.files[that.currentIndex]);
+			}
+			
 			return script;
 			
 			case "css" :

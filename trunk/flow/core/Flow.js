@@ -3,7 +3,7 @@ Namespace: The Flow Namespace
 	The Flow namespace, Array Extras, Plugin support, and other goodies.
 	
 About: Version
-	1.0.1
+	1.0.4
 
 License:
 	- Flow is licensed under a Creative Commons Attribution-Share Alike 3.0 License <http://creativecommons.org/licenses/by-sa/3.0/us/>. You are free to share, modify and remix our code as long as you share alike.
@@ -18,11 +18,31 @@ var Flow = {
 		stripWhitespace : function(element) {
 			// Private variables
 			var i = 0, kids = element.childNodes;
-
+			
+			var preTest = function(element) {
+				if (element) {
+					if ((/pre|code/).test(element.nodeName.toLowerCase()) || ((element.style) && (element.style.whiteSpace))) {
+						return true;
+					}
+				}
+				return false;
+			};
+			
+			// Break if '<pre>' or 'white-space: pre;' is detected
+			var parent = element;
+			
+			while (parent) {
+				if (preTest(parent)) {
+					return;
+				}
+				
+				parent = parent.parentNode;
+			}
+			
 			// Loop
 			while (i < kids.length) {
 				// If nodeType is 3 (TEXT_NODE) and does not include text
-				if (kids[i].nodeType == 3 && !(/\S/.test(kids[i].nodeValue))) {
+				if ((kids[i].nodeType == 3) && !(/\S/.test(kids[i].nodeValue))) {
 					// Remove child
 					element.removeChild(kids[i]);
 				}
@@ -483,6 +503,32 @@ var Flow = {
 						}
 					}
 					return rv;
+				},
+				
+				/*
+				Property: exit
+					Provides a way to break out of a forEach loop
+
+				Parameters:
+					index - A.K.A. "i", the current index in loop
+
+				Example:
+					Break a forEach loop:
+					(start code)
+					var array = [1, 2, 0, 3, 4, 5];
+					array.forEach(function(item, i) {
+					  if (item === 0) {
+					    array = array.exit(i); // Break!
+					  } else {
+					    console.log(item);
+					  }
+					});
+					console.log(array); // returns [1, 2, 0, 3, 4, 5];
+					(end code)
+				*/
+				exit : function(index) {
+					var that = this;
+					return that.concat(that.splice(index, that.length - index));
 				}
 			});
 			

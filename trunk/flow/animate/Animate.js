@@ -3,7 +3,7 @@ Namespace: The Animate Namespace
 	A small and powerful animation library.
 
 About: Version
-	1.0.1
+	1.0.4
 
 License:
 	- Based on David Zuch's animation prototype. Licensed under the Creative Commons Attribution-Share Alike 3.0 License <http://creativecommons.org/licenses/by-sa/3.0/us/>.

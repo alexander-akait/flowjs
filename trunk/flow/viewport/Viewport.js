@@ -3,7 +3,7 @@ Namespace: The Viewport Namespace
 	Viewport includes window and screen dimension reporting, window position and popup functions.
 
 About: Version
-	1.0.1
+	1.0.4
 
 License:
 	- Created by Michael Bester <http://kimili.com>. Released to the public domain.

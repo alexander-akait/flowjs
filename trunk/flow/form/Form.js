@@ -3,7 +3,7 @@ Namespace: The Form Namespace
 	Form includes methods for grabbing form field values, query string parsing and form serialization
 
 About: Version
-	1.0.1
+	1.0.4
 
 License:
 	- Created by Michael Bester <http://kimili.com>. Released to the public domain.

@@ -3,7 +3,7 @@ Namespace: The Dom Namespace
 	Extends the native JS DOM API across all grade-A browsers.
 
 About: Version
-	1.0.1
+	1.0.4
 
 Requires:
 	Flow.js.
@@ -187,8 +187,9 @@ new Flow.Plugin({
 					
 					if (doc[evalString]) {
 						return function(tagName) {
+							tagName = tagName.toLowerCase();
 							
-							switch (tagName.toLowerCase()) {
+							switch (tagName) {
 								case "applet" :
 								case "embed" :
 								return document._getElementsByTagName(tagName);
@@ -210,10 +211,11 @@ new Flow.Plugin({
 						};
 					}
 					return function(tagName) {
+						tagName = tagName.toLowerCase();
 
 						var that = this;
 
-						switch (tagName.toLowerCase()) {
+						switch (tagName) {
 							case "applet" :
 							case "embed" :
 							return document._getElementsByTagName(tagName);

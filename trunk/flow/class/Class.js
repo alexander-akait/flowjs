@@ -3,7 +3,7 @@ Namespace: The Class Namespace
 	Classical inheritance model provided by John Resig.
 
 About: Version
-	1.0.1
+	1.0.4
 
 License:
 	- Created by John Resig <http://ejohn.org/blog/simple-javascript-inheritance>
