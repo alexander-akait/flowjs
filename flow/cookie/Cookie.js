@@ -3,7 +3,7 @@ Namespace: The Cookie Namespace
 	Cookie management. Includes functions to set, get and delete cookies.
 
 About: Version
-	1.0.1
+	1.0.4
 
 License:
 	- Created by Noel Del Rosario <http://alter.hk>. Released to the public domain.

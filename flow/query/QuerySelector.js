@@ -3,7 +3,7 @@ Namespace: The Query Namespace
 	Cross-browser implementation of querySelector/querySelectorAll.
 
 About: Version
-	1.0.1
+	1.0.4
 	
 License:
 	- Huge ups to Robert Nyman <http://robertnyman.com> for saving us the undertaking of RegExing to match the selectors API: <http://www.w3.org/TR/selectors-api/>.
