@@ -581,7 +581,7 @@ new Flow.Plugin({
 
 							var PIXEL = /^\d+(px)?$/i;
 							var COLOR = /color|backgroundColor/i;
-							var SIZES = /width|height|top|bottom|left|right|margin|padding|border/i;
+							var SIZES = /width|height|top|bottom|left|right|margin|padding|border(.*)?Width/;
 							
 							// Limited to HTML 4.01 defined names
 							// http://www.w3.org/TR/REC-html40/types.html#h-6.5
