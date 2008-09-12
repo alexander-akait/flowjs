@@ -3,7 +3,7 @@ Namespace: The Animate Namespace
 	A small and powerful animation library.
 
 About: Version
-	1.0.4
+	1.0.5
 
 License:
 	- Based on David Zuch's animation prototype. Licensed under the Creative Commons Attribution-Share Alike 3.0 License <http://creativecommons.org/licenses/by-sa/3.0/us/>.
@@ -57,7 +57,7 @@ Example:
 */
 new Flow.Plugin({
 	name : "Animate",
-	version : "1.0.3",
+	version : "1.0.5",
 	constructor : function(options, duration) {
 
 		var that,
@@ -409,7 +409,7 @@ new Flow.Plugin({
 
 new Flow.Plugin({
 	name : "Fx",
-	version : "1.0.3",
+	version : "1.0.5",
 	constructor : function(animation) {
 		Flow.Fx[animation.name] = animation.constructor;
 	}
