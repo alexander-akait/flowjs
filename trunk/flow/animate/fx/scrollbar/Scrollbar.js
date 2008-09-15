@@ -63,6 +63,12 @@ new Flow.Fx({
 				
 				// Reference these during mousemove
 				var startY, offsetY;
+				
+				// Make sure content starts at correct position
+				if (parent.scrollTop !== 0) {
+					var percent = (parent.scrollTop / content.offsetHeight) * 100;
+					handle.style.top = (percent) + "%";
+				}
 
 				// Mousemove FTW.
 				var mousemove = function(e) {
@@ -281,6 +287,9 @@ new Flow.Fx({
 				viewport = (viewport < 100) ? ((viewport > $this.vars.minHeight) ? viewport : $this.vars.minHeight) : 0;
 
 				handle.style.height = (viewport) + "%";
+				
+				var percent = (content.scrollTop / child.offsetHeight) * 100;
+				handle.style.top = (percent) + "%";
 			},
 			setContentHeight : function(parent, target, scrollbar) {
 				var container = parent.parentNode;
