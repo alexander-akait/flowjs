@@ -3,7 +3,7 @@ Namespace: The Event Namespace
 	Never again worry about memory leaks. Event automagically garbage-collects any node you remove/replace, and flushes event listeners on unload. In addition, Event brings native event handling API support.
 
 About: Version
-	1.0.5
+	1.0.6
 
 License:
 	- Some parts of _addEventListener_ based on Dean Edwards' event methods <http://dean.edwards.name/weblog/2005/10/add-event/>
@@ -19,7 +19,7 @@ Requires:
 */
 new Flow.Plugin({
 	name : "Event",
-	version : "1.0.5",
+	version : "1.0.6",
 	bind : true,
 	constructor : function() {
 		var F = Flow,
@@ -160,7 +160,12 @@ new Flow.Plugin({
 									node = window;
 								}
 								
-								node["on" + type] = handleEvent;
+								// If "DOM" event, these don't support "on" attachments
+								if (/DOM/.test(type)) {
+									node._addEventListener(type, handler, false);
+								} else {
+									node["on" + type] = handleEvent;
+								}
 							}
 							
 							node.events[type][handler.SCH] = handler;
@@ -245,7 +250,7 @@ new Flow.Plugin({
 					};
 					
 					// Firebug no likee
-					if (window.console && console.firebug) {
+					if (typeof window.console !== "undefined") {
 						try {
 							that._dispatchEvent(type);
 						} catch (e) {
