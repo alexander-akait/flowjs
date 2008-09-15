@@ -3,7 +3,7 @@ Namespace: The Dom Namespace
 	Extends the native JS DOM API across all grade-A browsers.
 
 About: Version
-	1.0.5
+	1.0.6
 
 Requires:
 	Flow.js.
@@ -17,7 +17,7 @@ Notes:
 
 new Flow.Plugin({
 	name : "Dom",
-	version : "1.0.5",
+	version : "1.0.6",
 	bind : true,
 	constructor : function() {
 
@@ -509,8 +509,11 @@ new Flow.Plugin({
 								case true :
 								if (/rgb/.test(value)) {
 									// Switch to Hex
-									value = (/rgb\(([^\)]+)\)/).exec(value)[1].split(/\, ?/);
-									return RGBtoHex(value[0], value[1], value[2]).toLowerCase();
+									var rgb = (/rgb\(([^\)]+)\)/).exec(value);
+									if (rgb && rgb[1]) {
+										rgb = rgb[1].split(/\, ?/);
+										return RGBtoHex(rgb[0], rgb[1], rgb[2]).toLowerCase();
+									}
 								} else {
 									// Make sure hex is lowercase
 									var hexcode = (/\#[a-zA-Z0-9]+/).exec(value);
@@ -519,6 +522,7 @@ new Flow.Plugin({
 									}
 									return value;
 								}
+								break;
 								
 								default :
 								return value;
