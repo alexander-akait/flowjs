@@ -3,7 +3,7 @@ Namespace: Drag Module
 	Custom scrollbars at your command.
 
 About: Version
-	1.0.5
+	1.0.6
 
 License:
 	- Created by Richard Herrera <http://doctyper.com>
@@ -16,15 +16,24 @@ Requires:
 
 new Flow.Fx({
 	name : "Scrollbar",
-	version : "1.0.5",
+	version : "1.0.6",
 	constructor : function(target, options) {
 		var $this;
 		return {
+			vars : {
+				wheelSpeed : 6, // 1 - 10 (1 being the slowest, 10 the highest. Default = 6)
+				minHeight : 10 // minimum height of scrollbar (In pixels. Default = 10)
+			},
 			init : function(target, options) {
 				$this = this;
 				
 				options = options || {};
 				$this.options = options;
+				
+				for (var key in $this.vars) {
+					$this.options[key] = $this.options[key] || $this.vars[key];
+				}
+				
 				$this.options.targetElement = target;
 				
 				$this.setDragEvent();
@@ -50,7 +59,7 @@ new Flow.Fx({
 				$this.setContentHeight(parent, content, scrollbar);
 				
 				// Make sure scrollbar matches percentage-wise
-				$this.setScrollbarHeight();
+				$this.resetScrollbar();
 				
 				// Reference these during mousemove
 				var startY, offsetY;
@@ -231,7 +240,7 @@ new Flow.Fx({
 				$this.handleMouseWheelEvent(container, function(delta) {
 					
 					// Speed it up a bit
-					var value = (delta * 6);
+					var value = (delta * $this.vars.wheelSpeed);
 					
 					switch (delta > 0) {
 						case true :
@@ -257,11 +266,11 @@ new Flow.Fx({
 				wrapper.setInnerHTML('<div class="scrollbarContent"></div><div class="scrollbarContainer"><div class="scrollbarHandle"></div></div>', "append");
 				wrapper.getByClass("scrollbarContent")[0].appendChild(target);
 				
-				$this.setScrollbarHeight();
+				$this.resetScrollbar();
 				
 				return wrapper;
 			},
-			setScrollbarHeight : function() {
+			resetScrollbar : function() {
 				var content = document.getByClass("scrollbarContent")[0],
 				    child = content.getFirstChild(),
 				    handle = document.getByClass("scrollbarHandle")[0];
@@ -269,7 +278,7 @@ new Flow.Fx({
 				// We need to ensure the scrollbar reflects the proper size perspective
 				// We set it once onload, and once every time the click event fires (see below)
 				var viewport = Math.floor((content.offsetHeight / child.offsetHeight) * 100);
-				viewport = (viewport < 100) ? viewport : 0;
+				viewport = (viewport < 100) ? ((viewport > $this.vars.minHeight) ? viewport : $this.vars.minHeight) : 0;
 
 				handle.style.height = (viewport) + "%";
 			},
@@ -316,10 +325,12 @@ new Flow.Fx({
 				};
 				
 				for (var key in props) {
+					var i, j, cc, prop;
+					
 					if (props[key] instanceof Array) {
-						for (var i = 0, j = props[key].length; i < j; i++) {
-							var prop = props[key][i],
-							    cc = Flow.Utils.toCamelCase(prop);
+						for (i = 0, j = props[key].length; i < j; i++) {
+							prop = props[key][i];
+							cc = Flow.Utils.toCamelCase(prop);
 
 							parent.style[cc] = child.getComputedStyle(prop);
 							child.style[cc] = 0;
@@ -327,10 +338,10 @@ new Flow.Fx({
 					} else {
 						for (var e in props[key]) {
 							var string = [];
-							var cc = Flow.Utils.toCamelCase("border-" + e);
+							cc = Flow.Utils.toCamelCase("border-" + e);
 							
-							for (var i = 0, j = props[key][e].length; i < j; i++) {
-								var prop = props[key][e][i];
+							for (i = 0, j = props[key][e].length; i < j; i++) {
+								prop = props[key][e][i];
 								
 								var computed = child.getComputedStyle(prop);
 								string.push(computed || "solid");
