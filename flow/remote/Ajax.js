@@ -1,6 +1,6 @@
 new Flow.Plugin({
 	name : "Ajax",
-	version : "1.0.5",
+	version : "1.0.6",
 	description : "Enables XHR request chaining",
 	constructor : function(url, method) {
 		var req = new HttpRequest();
