@@ -32,7 +32,11 @@ new Flow.Plugin({
 		    doc = document,
 		    readyState = "readyState",
 		    ContentLoaded = /ContentLoaded/;
-
+		
+		var isFB = function() {
+			return !!(window.console && window.console.firebug);
+		}();
+		
 		return {
 
 			/*
@@ -250,7 +254,7 @@ new Flow.Plugin({
 					};
 					
 					// Firebug no likee
-					if (typeof window.console !== "undefined") {
+					if (isFB) {
 						try {
 							that._dispatchEvent(type);
 						} catch (e) {
