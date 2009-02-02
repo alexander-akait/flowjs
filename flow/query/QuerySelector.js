@@ -3,7 +3,7 @@ Namespace: The Query Namespace
 	Cross-browser implementation of querySelector/querySelectorAll.
 
 About: Version
-	1.0.6
+	1.0.7
 	
 License:
 	- Huge ups to Robert Nyman <http://robertnyman.com> for saving us the undertaking of RegExing to match the selectors API: <http://www.w3.org/TR/selectors-api/>.
@@ -18,7 +18,7 @@ Requires:
 */
 new Flow.Plugin({
 	name : "Query",
-	version : "1.0.6",
+	version : "1.0.7",
 	bind : true,
 	
 	constructor : function() {
