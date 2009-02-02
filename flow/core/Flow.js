@@ -16,37 +16,19 @@ var Flow = {
 	Utils : {
 		
 		stripWhitespace : function(element) {
-			// Private variables
-			var i = 0, kids = element.childNodes;
-			
-			var preTest = function(element) {
-				if (element) {
-					if ((/pre|code/).test(element.nodeName.toLowerCase()) || ((element.style) && (element.style.whiteSpace))) {
-						return true;
+			if (Flow.Settings.removeWhitespace) {
+				// Private variables
+				var i = 0, kids = element.childNodes;
+
+				// Loop
+				while (i < kids.length) {
+					// If nodeType is 3 (TEXT_NODE) and does not include text
+					if ((kids[i].nodeType == 3) && !(/\S/.test(kids[i].nodeValue))) {
+						// Remove child
+						element.removeChild(kids[i]);
 					}
+					i++;
 				}
-				return false;
-			};
-			
-			// Break if '<pre>' or 'white-space: pre;' is detected
-			var parent = element;
-			
-			while (parent) {
-				if (preTest(parent)) {
-					return;
-				}
-				
-				parent = parent.parentNode;
-			}
-			
-			// Loop
-			while (i < kids.length) {
-				// If nodeType is 3 (TEXT_NODE) and does not include text
-				if ((kids[i].nodeType == 3) && !(/\S/.test(kids[i].nodeValue))) {
-					// Remove child
-					element.removeChild(kids[i]);
-				}
-				i++;
 			}
 		},
 		
@@ -794,8 +776,40 @@ var Flow = {
 		} else {
 			plugin.constructor();
 		}
-	}
+	},
 	
+	/*
+		Class: Settings
+		Allows you to override certain aspects of Flow
+
+		Example:
+			(start code)
+			// Prevent DOM normalization (if you're dealing with <pre> tags, for example)
+			// WARNING: This will break cross-browser normailzation of nextSibling / previousSibling / firstChild.
+			<script type="text/javascript" src="flow.js">
+				Flow.Settings.removeWhitespace = false;
+			</script>
+			(end code)
+	*/
+	Settings : {
+		removeWhitespace : true
+	}
 };
 
 Flow.Browser.init();
+
+(function() {
+	var scripts = document.getElementsByTagName("script"),
+	    current = scripts[scripts.length - 1];
+	
+	if (current.executed) {
+		return;
+	}
+	
+	current.executed = true;
+	
+	var script = current.innerHTML;
+	if (script) {
+		window.eval(script);
+	}
+})();
