@@ -3,7 +3,7 @@ Namespace: The Class Namespace
 	Classical inheritance model provided by John Resig.
 
 About: Version
-	1.0.7
+	1.0.8
 
 License:
 	- Created by John Resig <http://ejohn.org/blog/simple-javascript-inheritance>
@@ -16,7 +16,7 @@ Requires:
 
 new Flow.Plugin({
 	name : "Class",
-	version : "1.0.7",
+	version : "1.0.8",
 	constructor : // Inspired by base2 and Prototype
 	function() {
 		var initializing = false,

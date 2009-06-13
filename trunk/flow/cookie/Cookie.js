@@ -3,7 +3,7 @@ Namespace: The Cookie Namespace
 	Cookie management. Includes functions to set, get and delete cookies.
 
 About: Version
-	1.0.7
+	1.0.8
 
 License:
 	- Created by Noel Del Rosario <http://alter.hk>. Released to the public domain.
@@ -16,7 +16,7 @@ Requires:
 
 new Flow.Plugin({
 	name : "Cookie",
-	version : "1.0.7",
+	version : "1.0.8",
 	bind : true,
 	constructor : {
 

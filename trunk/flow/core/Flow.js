@@ -3,7 +3,7 @@ Namespace: The Flow Namespace
 	The Flow namespace, Array Extras, Plugin support, and other goodies.
 	
 About: Version
-	1.0.7
+	1.0.8
 
 License:
 	- Flow is licensed under a Creative Commons Attribution-Share Alike 3.0 License <http://creativecommons.org/licenses/by-sa/3.0/us/>. You are free to share, modify and remix our code as long as you share alike.
@@ -138,9 +138,9 @@ var Flow = {
 
 	Properties:
 		Flow.Browser.IE - Internet Explorer.
-		Flow.Browser.IE5 - Internet Explorer 5
 		Flow.Browser.IE6 - Internet Explorer 6
 		Flow.Browser.IE7 - Internet Explorer 7
+		Flow.Browser.IE8 - Internet Explorer 8
 		Flow.Browser.GK - Gecko-based
 		Flow.Browser.WK - Webkit
 		Flow.Browser.S3 - Safari 3
@@ -154,16 +154,16 @@ var Flow = {
 			e.IE.jscript/*@cc_on =@_jscript_version@*/;
 
 			switch (e.IE.jscript) {
+				case 5.8 :
+				e.IE8 = true;
+				break;
+
 				case 5.7 :
 				e.IE7 = true;
 				break;
 
 				case 5.6 :
 				e.IE6 = true;
-				break;
-
-				default :
-				e.IE5 = true;
 				break;
 			}
 		},
