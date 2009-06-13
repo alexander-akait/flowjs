@@ -3,7 +3,7 @@ Namespace: Drag Module
 	Custom scrollbars at your command.
 
 About: Version
-	1.0.7
+	1.0.8
 
 License:
 	- Created by Richard Herrera <http://doctyper.com>
@@ -16,7 +16,7 @@ Requires:
 
 new Flow.Fx({
 	name : "Scrollbar",
-	version : "1.0.7",
+	version : "1.0.8",
 	constructor : function(target, options) {
 		var $this;
 		return {
