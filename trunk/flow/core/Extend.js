@@ -3,7 +3,7 @@ Namespace: The Extend Namespace
 	Extend allows you to chain one function after another, and introduces support for helper functions.
 
 About: Version
-	1.0.8
+	1.1
 
 	License:
 		- Flow is licensed under a Creative Commons Attribution-Share Alike 3.0 License <http://creativecommons.org/licenses/by-sa/3.0/us/>. You are free to share, modify and remix our code as long as you share alike.
@@ -15,7 +15,7 @@ Requires:
 */
 new Flow.Plugin({
 	name : "Extend",
-	version : "1.0.8",
+	version : "1.1",
 	bind : true,
 	constructor : function() {
 

@@ -3,7 +3,7 @@ Namespace: The Viewport Namespace
 	Viewport includes window and screen dimension reporting, window position and popup functions.
 
 About: Version
-	1.0.8
+	1.1
 
 License:
 	- Created by Michael Bester <http://kimili.com>. Released to the public domain.
@@ -16,7 +16,7 @@ Requires:
 
 new Flow.Plugin({
 	name : "Viewport",
-	version : "1.0.8",
+	version : "1.1",
 	constructor : function() {
 		var doc = document,
 		    body = "body",
