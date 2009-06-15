@@ -1,0 +1,11 @@
+Flow 1.1
+===============================================
+- Switched QuerySelector engine to Sizzle 1.0
+- querySelector/querySelectorAll can now be run on any element (via Selectors API)
+- IE 8 does not like setAttribute on type elements. Reverting to DOM 1 method.
+- Fixed minor assertion bug in Require.js
+
+
+Flow 1.0.8
+===============================================
+- IE 8 is now correctly identified as IE 8 (not IE 5).
