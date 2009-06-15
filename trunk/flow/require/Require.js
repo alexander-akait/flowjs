@@ -3,7 +3,7 @@ Namespace: The Require Namespace
 	On demand javascript lets you dynamically include scripts and styles on your page.
 
 About: Version
-	1.0.8
+	1.1
 
 License:
 	- Created by Champ Bennett. Released to the public domain.
@@ -18,7 +18,7 @@ Requires:
 
 new Flow.Plugin({
 	name : "Require",
-	version : "1.0.8",
+	version : "1.1",
 	constructor : function(type, uri, managed) {
 		var head, script, style,
 		    that = this;
@@ -62,7 +62,7 @@ new Flow.Plugin({
 			};
 			
 			var loadNextScript = function() {
-				if (that.files[++that.currentIndex]) {
+				if (that.files && that.files[++that.currentIndex]) {
 					createScript(that.files[that.currentIndex]);
 				} else {
 					delete that.files;
