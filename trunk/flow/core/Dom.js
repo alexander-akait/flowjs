@@ -3,7 +3,7 @@ Namespace: The Dom Namespace
 	Extends the native JS DOM API across all grade-A browsers.
 
 About: Version
-	1.0.8
+	1.1
 
 Requires:
 	Flow.js.
@@ -17,7 +17,7 @@ Notes:
 
 new Flow.Plugin({
 	name : "Dom",
-	version : "1.0.8",
+	version : "1.1",
 	bind : true,
 	constructor : function() {
 
@@ -394,10 +394,12 @@ new Flow.Plugin({
 
 						case "for" :
 						return that.htmlFor;
+						
+						case "type" :
+						return that.type;
 
 						case "href" :
 						case "src" :
-						case "type" :
 						case "value" :
 						return that._getAttribute(attribute, 2);
 
@@ -437,6 +439,10 @@ new Flow.Plugin({
 
 						case "title" :
 						that.title = value;
+						return;
+						
+						case "type" :
+						that.type = value;
 						return;
 
 						default :
