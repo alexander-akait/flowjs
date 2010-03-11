@@ -3,7 +3,7 @@ Namespace: Accordion Module
 	A flow widget that auto-expands on click / mouseover.
 
 About: Version
-	1.1
+	1.1.1
 
 License:
 	- Created by Richard Herrera <http://doctyper.com>
@@ -16,7 +16,7 @@ Requires:
 
 new Flow.Fx({
 	name : "Accordion",
-	version : "1.1",
+	version : "1.1.1",
 	constructor : function(target, options) {
 		var that;
 

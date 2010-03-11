@@ -1,3 +1,7 @@
+Flow 1.1.1
+===============================================
+- Google Chrome returns a null property if getPropertyValue is overwritten in window.getComputedStyle. Bypassing for Chrome.
+
 Flow 1.1
 ===============================================
 - Switched QuerySelector engine to Sizzle 1.0

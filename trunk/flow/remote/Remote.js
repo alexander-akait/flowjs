@@ -3,7 +3,7 @@ Namespace: The Remote Namespace
 	All internal references use the Flow namespace.
 
 About: Version
-	1.1
+	1.1.1
 
 License:
 	- Sergey Ilinsky's cross-browser XHR solution <http://www.ilinsky.com>. Licensed under the Apache License, Version 2.0 <http://www.apache.org/licenses/LICENSE-2.0>.
@@ -88,7 +88,7 @@ Example:
 
 new Flow.Plugin({
 	name : "Remote",
-	version : "1.1",
+	version : "1.1.1",
 	constructor : 
 	
 	// Copyright 2007 Sergey Ilinsky (http://www.ilinsky.com)
