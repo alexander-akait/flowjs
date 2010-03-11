@@ -508,32 +508,34 @@ new Flow.Plugin({
 						
 						var computedStyle = document.defaultView._getComputedStyle(element, pseudoElt);
 						
-						computedStyle.getPropertyValue = function(property) {
+						if (!B.Chrome) {
+							computedStyle.getPropertyValue = function(property) {
 							
-							var value = document.defaultView._getComputedStyle(element, pseudoElt).getPropertyValue(property);
-							switch (/color|background/.test(property)) {
-								case true :
-								if (/rgb/.test(value)) {
-									// Switch to Hex
-									var rgb = (/rgb\(([^\)]+)\)/).exec(value);
-									if (rgb && rgb[1]) {
-										rgb = rgb[1].split(/\, ?/);
-										return RGBtoHex(rgb[0], rgb[1], rgb[2]).toLowerCase();
+								var value = document.defaultView._getComputedStyle(element, pseudoElt).getPropertyValue(property);
+								switch (/color|background/.test(property)) {
+									case true :
+									if (/rgb/.test(value)) {
+										// Switch to Hex
+										var rgb = (/rgb\(([^\)]+)\)/).exec(value);
+										if (rgb && rgb[1]) {
+											rgb = rgb[1].split(/\, ?/);
+											return RGBtoHex(rgb[0], rgb[1], rgb[2]).toLowerCase();
+										}
+									} else {
+										// Make sure hex is lowercase
+										var hexcode = (/\#[a-zA-Z0-9]+/).exec(value);
+										if (hexcode && hexcode[0]) {
+											value = value.replace(hexcode[0], hexcode[0].toLowerCase());
+										}
+										return value;
 									}
-								} else {
-									// Make sure hex is lowercase
-									var hexcode = (/\#[a-zA-Z0-9]+/).exec(value);
-									if (hexcode && hexcode[0]) {
-										value = value.replace(hexcode[0], hexcode[0].toLowerCase());
-									}
+									break;
+								
+									default :
 									return value;
 								}
-								break;
-								
-								default :
-								return value;
-							}
-						};
+							};
+						}
 						
 						return computedStyle;
 					} else {

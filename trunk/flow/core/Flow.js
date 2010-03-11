@@ -144,6 +144,7 @@ var Flow = {
 		Flow.Browser.GK - Gecko-based
 		Flow.Browser.WK - Webkit
 		Flow.Browser.S3 - Safari 3
+		Flow.Browser.Chrome - Chrome
 		Flow.Browser.OP - Opera
 	*/
 	Browser : {
@@ -182,6 +183,7 @@ var Flow = {
 				GK : !!(ua(/gecko/)), // Gecko
 				WK : !!(ua(/webkit/)), // Webkit
 				S3 : !!(ua(/webkit/) && window.devicePixelRatio), // Safari 3
+				Chrome : !!(ua(/chrome/)), // Chrome
 				KHTML : !!(ua(/khtml|webkit|icab/i)), // KHTML
 				OP : !!(ua(/opera/)) // Opera
 			});
