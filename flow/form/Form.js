@@ -3,7 +3,7 @@ Namespace: The Form Namespace
 	Form includes methods for grabbing form field values, query string parsing and form serialization
 
 About: Version
-	1.1
+	1.1.1
 
 License:
 	- Created by Michael Bester <http://kimili.com>. Released to the public domain.
@@ -17,7 +17,7 @@ Requires:
 
 new Flow.Plugin({
 	name : "Form",
-	version : "1.1",
+	version : "1.1.1",
 	bind : true,
 	constructor : function() {
 		var getForm = function(f) {

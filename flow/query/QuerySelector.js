@@ -3,7 +3,7 @@ Namespace: The Query Namespace
 	Cross-browser implementation of querySelector/querySelectorAll.
 
 About: Version
-	1.1
+	1.1.1
 	
 License:
 	- Huge ups to Robert Nyman <http://robertnyman.com> for saving us the undertaking of RegExing to match the selectors API: <http://www.w3.org/TR/selectors-api/>.
@@ -1010,7 +1010,7 @@ window.Sizzle = Sizzle;
 
 new Flow.Plugin({
 	name : "Query",
-	version : "1.1",
+	version : "1.1.1",
 	bind : true,
 	
 	constructor : function() {
